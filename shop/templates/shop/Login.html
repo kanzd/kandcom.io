@@ -1,0 +1,44 @@
+{% extends 'shop/basic.html' %}
+{% block title %}Login{% endblock %}
+{% block style %} .lay{
+margin-top:30px;
+margin-left:300px;
+margin-right:300px;}
+.tx{
+font-family: cursive;
+margin-left:300px;
+margin-right:300px;
+font-size: 160%;
+color:gold;
+}
+.lay2{
+margin-top:40px;
+margin-left:270px;
+margin-right:270px;
+}
+{% endblock %}
+{% block body %}
+{% if kal %}
+<div class="alert alert-danger" role="alert">
+ Wrong details
+</div>
+{% endif %}
+{% if login or val %}
+<div class="alert alert-danger" role="alert">
+  Enter the details.
+</div>
+{% endif %}
+<form class="lay" action="/" method="post">{% csrf_token %}
+  <div class="form-group">
+    <label for="exampleInputEmail1" class="tx">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
+    <small id="emailHelp" class="form-text text-muted"></small>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1" class="tx">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+  </div>
+
+    <input type="hidden" value="{{login}}" name="check">
+  <button type="submit" class="btn btn-primary lay">Submit</button>
+</form>{% endblock %}

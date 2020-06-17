@@ -1,0 +1,22 @@
+{% extends 'shop/basic.html' %}
+{% block title%} Cart{%endblock%}
+{% block body %}
+{% for j,i in cart %}
+<div class="card mb-3">
+  <img src="/media/{{i.image}} " width=200px' height="200px" alt="">
+  <div class="card-body">
+    <h5 class="card-title">{{i.product_name}}</h5>
+    <p class="card-text">proceed for check Out</p>
+    <form action="checkout" method="post">{% csrf_token %}
+      <input type="hidden" value="{{j.id}}" name="all">
+      <input type="submit" value="Paynow">
+      </form>
+    <p class="card-text"><small class="text-muted"></small></p>
+  </div>
+</div>
+{% endfor %}
+{% endblock %}
+{% block script %}
+
+
+{% endblock %}

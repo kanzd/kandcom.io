@@ -1,0 +1,27 @@
+{% extends 'shop/basic.html' %}
+{% block title %} showall products {% endblock %}
+{% block body %}
+{% for i in kanx %}
+<div class="card mb-3" style="max-width: 540px;">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <img src="/media/{{i.image}}" class="card-img" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{i.product_name}}</h5>
+        <p class="card-text">{{i.desc}}</p>
+        <p class="card-text"><small class="text-muted">{{i.price}}</small></p>
+           <form action="cart" method="post">{% csrf_token %}
+        <div>
+        <input type="hidden" value="{{i.product_name}}" name="products"></div>
+        <div>
+      <input type="submit" class="add" value="Add to cart">
+          </div>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+{% endblock %}
